@@ -9,11 +9,16 @@ set encoding=utf-8
 
 " Whitespace stuff
 set nowrap
-set tabstop=2
+set tabstop=4
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
+inoremap # X<BS>#
+function! StripWhitespace ()
+    exec ':%s/ \+$//gc'
+endfunction
+map ,s :call StripWhitespace ()<CR>
 
 " Searching
 set hlsearch
@@ -24,6 +29,28 @@ set smartcase
 " Tab completion
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+set nosmarttab
+set expandtab
+
+" Movement
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+" Other
+set whichwrap+=<,>,h,l,[,]
+set report=0
+set nostartofline
+set showmatch
+set mat=5
+set visualbell
 
 " Status bar
 set laststatus=2

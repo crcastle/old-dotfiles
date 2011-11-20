@@ -1,9 +1,24 @@
 # ls
-alias ls='ls -Fh'
-alias la='ls -A'
+# overides for ls
+#   Made possible through contributions from generous benefactors like
+#   `brew install coreutils`
+if $(gls &>/dev/null)
+then
+  alias ls="gls -F --color"
+  alias l="gls -lAh --color"
+  alias ll="gls -l --color"
+  alias la='gls -A --color'
+else
+  alias ls='ls -Fh'
+  alias la='ls -A'
+fi
 
 # Git
 alias g='git'
 alias gst='git status'
 alias gb='git branch'
 alias gba='git branch -a'
+
+# Override default history search
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
