@@ -18,6 +18,7 @@ alias g='git'
 alias gst='git status'
 alias gb='git branch'
 alias gba='git branch -a'
+alias gl="git log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
 
 # Override default history search
 bind '"\e[A": history-search-backward'
